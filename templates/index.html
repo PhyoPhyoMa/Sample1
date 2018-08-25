@@ -3,14 +3,143 @@
 	<title>Universal Font Converter</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="{{ url_for('static', filename='js/app.js')}}"></script>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="../static/css/materialize.css"  media="screen,projection"/>
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta charset="utf-8">
+		
+	<link rel="stylesheet" href="../static/css/material.css">
+	<script src="../static/js/material.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
+	<style>
+			#from_text{width: 100%; height: 500px; }
+			#to_text{width: 100%; height: 500px; }
+			.btn {
+   				 border: none; /* Remove borders */
+   				 color: white; /* Add a text color */
+   				 padding: 3px 28px; /* Add some padding */
+   				 cursor: pointer; /* Add a pointer cursor on mouse-over */
+				}
+			
+			.success {background-color: #4CAF50;} /* Green */
+			.success:hover {background-color: #46a049;}
+			
+			.nav-wrapper {
+  			 		 background-color: #4CAF50 !important;
+   					 font-size: 14px;
+   					 font-weight: bold;
+ 				 }
+			
+	</style>
 	<body>
-		<form>
-			Input:<br>
-			<textarea id="myinput" placeholder="Enter text here"></textarea><br>
-			Output:
-			<textarea id="output" placeholder="Result"></textarea><br>
-			<button type="submit">Convert</button>
-		</form>
+		<nav>
+   		 <div class="nav-wrapper">
+     		 <a href="#" class="brand-logo">Universal Font Converter</a>
+      		<ul id="nav-mobile" class="right hide-on-med-and-down">
+       		 <li><a ><i class="material-icons">content_copy</i>  </a></li>
+      		 <li> <a ><i class="material-icons">content_paste</i> </a></li>
+      		  <li><a href="sass.html"><i class="material-icons">delete</i></a></li>
+     		 </ul>
+   		 </div>
+ 		 </nav>
+		<br>
+		<div style="width:50%;float:left;overflow:hidden"><h5>Input:</h5>
+		<p>
+   		 <label>
+     	 <input class="with-gap" name="group3" id="from_zawgyi" type="radio" value="from_zawgyi" checked />
+     	 <span>Zawgyi</span>
+   	 </label></p>
+	<p>
+   	 <label>
+     	 <input class="with-gap" name="group3" id="from_unicode" type="radio" value="from_unicode />
+     	 <span>Unicode</span>
+    	</label></p>
+		<p>
+    	<label>
+      	<input class="with-gap" name="group3" id="from_win" type="radio" value="from_win" />
+     	 <span>Wincode</span>
+  	  </label>
+ 	 </p><br><textarea type="text" id="from_text" name="from_text" ></textarea></div>
+ 	 <div style="width:50%;overflow:hidden"><h5>Output:</h5>
+		<p>
+    <label>
+      <input class="with-gap" name="group4" id="to_zawgyi" type="radio" value="to_zawgyi" checked />
+      <span>Zawgyi</span>
+    </label></p>
+	<p>
+    <label>
+      <input class="with-gap" name="group4" id="to_unicode" type="radio" value="to_unicode />
+      <span>Unicode</span>
+    </label></p>
+	<p>
+    <label>
+      <input class="with-gap" name="group4" id="to_win" type="radio" value="to_win" />
+      <span>Wincode</span>
+    </label>
+  </p><br><textarea type="text" id="to_text" name="to_text" ></textarea></div>
+  <p align ="center"><button class="btn success" >Convert</button></p>
+		<footer class="mdl-mega-footer">
+  <div class="mdl-mega-footer__middle-section">
+
+    <div class="mdl-mega-footer__drop-down-section">
+      <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+      <h1 class="mdl-mega-footer__heading">Features</h1>
+      <ul class="mdl-mega-footer__link-list">
+        <li><a href="../static/aboutus.html">About us</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Partners</a></li>
+      </ul>
+    </div>
+
+    <div class="mdl-mega-footer__drop-down-section">
+      <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+      <h1 class="mdl-mega-footer__heading">Details</h1>
+      <ul class="mdl-mega-footer__link-list">
+        <li><a href="#">Specs</a></li>
+        <li><a href="#">Tools</a></li>
+        <li><a href="#">Resources</a></li>
+      </ul>
+    </div>
+
+    <div class="mdl-mega-footer__drop-down-section">
+      <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+      <h1 class="mdl-mega-footer__heading">Technology</h1>
+      <ul class="mdl-mega-footer__link-list">
+        <li><a href="#">How it works</a></li>
+        <li><a href="#">Patterns</a></li>
+        <li><a href="#">Usage</a></li>
+        <li><a href="#">Products</a></li>
+      </ul>
+    </div>
+
+    <div class="mdl-mega-footer__drop-down-section">
+      <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+      <h1 class="mdl-mega-footer__heading">FAQ</h1>
+      <ul class="mdl-mega-footer__link-list">
+        <li><a href="../static/FAQ.html">Q&A</a></li>
+        <li><a href="../static/contact.html">Contact us</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="mdl-mega-footer__bottom-section">
+    <div class="mdl-logo">Title</div>
+    <ul class="mdl-mega-footer__link-list">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Privacy & Terms</a></li>
+    </ul>
+  </div>
+
+</footer>
+		<!--JavaScript at end of body for optimized loading-->
+		<script type="text/javascript" src="../static/js/materialize.js"></script>
+		
 	</body>
 </html>
 
