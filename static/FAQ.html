@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<style>
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.accordion:after {
+    content: '\2B9B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2B99";
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+</style>
+<body>
+<img src="FlowersAspire.jpg" alt="Trulli" width="1400" height="333">
+<h1 align="center">FAQ for Universal Font Converter</h1>
+<button class="accordion">Q:How many kinds of Myanmar fonts are there?</button>
+<div class="panel">
+  <p>Four as far as I konw-<br>
+		1.Unicode<br>
+		2.Ayar<br>
+		3.Zawgyi<br>
+		4.Win Myanmar(ASCII).<br>
+  </p>
+</div>
+
+<button class="accordion">Q:What fonts can be converted in this Universal Font Converter website?</button>
+<div class="panel">
+  <p>You can be converted Unicode,Zawgyi and Win Myanmar.</p>
+</div>
+
+<button class="accordion">Q:What converter are the commenly used in Myanmar language?</button>
+<div class="panel">
+  <p>Zawgyi to Unicode and Unicode to Zawgyi font converter are the commenly used in Myanmar language.</p>
+</div>
+
+<button class="accordion">Q:Where can i see code charts?</button>
+<div class="panel">
+  <p>You can see at <a href="https://docs.google.com/spreadsheets/d/1R0wxPEgVi1_GJTQCFns84QVGf1v2UtL4Mo6KGzmJlWY/edit#gid">Code Charts</a></p>
+</div>
+
+<button class="accordion">Q:What font is used to slove complicated Myanmar character design?</button>
+<div class="panel">
+  <p>Win Myanmar is used to solve complicated Myanmar character design.</p>
+</div><br><br>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+</body>
+</html>
