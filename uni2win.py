@@ -129,7 +129,7 @@ def precompose(input):
 def logical2visual(input):
 	output = input
 	#place
-	output = re.sub(u'([\u1000-\u1021])((?:\u103C)?)((?:\u103B)?)((?:\u103D)?)((?:\u103E)?)((?:\u1031)?)((?:\u102C)?)','\\6\\2\\1\\3\\4\\5\\7', output)
+	output = re.sub(u'([\u1000-\u1021])((?:\u1039[\u1000-\u1021])?)((?:\u103C)?)((?:\u103B)?)((?:\u103D)?)((?:\u103E)?)((?:\u1031)?)((?:\u103A)?)((?:\u1037)?)((:\u102C)?)','\\7\\3\\1\\2\\4\\5\\6\\8\\9\\10', output)
 
 	# ngr_sint
 	output = re.sub(u'\u102d\u1036\u1039', u'\u00F0', output)  # lone_gyi_tin_ta_ta_tin
