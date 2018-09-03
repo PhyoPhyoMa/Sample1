@@ -83,7 +83,7 @@ def replace(input):
 def visual2logical(input):
 	output = input
 	#place
-	output = re.sub(u'((?:\u1031)?)((?:\u103C)?)([\u1000-\u1021])((?:\u103D)?)((?:\u103B)?)((?:\u103E)?)((?:\u102C)?)', u"\\3\\2\\5\\4\\6\\1\\7", output);
+	output = re.sub(u'((?:\u1031)?)((?:\u103C)?)((?:\u0046)?)([\u1000-\u1021])((?:\u1039[\u1000-\u1021])?)((?:\u103B)?)((?:\u103D)?)((?:\u103E)?)((?:\u1037)?)((?:\u102C)?)', '\\3\\4\\5\\2\\6\\7\\8\\1\\9\\10', output)
 	return output
 
 def decompose(input):
