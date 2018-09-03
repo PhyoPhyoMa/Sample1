@@ -1,24 +1,48 @@
+
 <!DOCTYPE html>
 <html>
-	<title>Universal Font Converter</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="{{ url_for('static', filename='js/app.js')}}"></script>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href="../static/css/materialize.css"  media="screen,projection"/>
+	<head>
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="../static/css/materialize.css"  media="screen,projection"/>
 
-	<!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<meta charset="utf-8">
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta charset="utf-8">
 		
-	<link rel="stylesheet" href="../static/css/material.css">
-	<script src="../static/js/material.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	
-	<style>
-			#from_text{width: 100%; height: 500px; }
-			#to_text{width: 100%; height: 500px; }
+		<link rel="stylesheet" href="../static/css/material.css">
+		<script src="../static/js/material.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="{{ url_for('static', filename='js/app.js')}}"></script>
+		<link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
+		<link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=zawgyi' />
+		<script src="../static/js/font.js"></script>
+		<script type="text/javascript">
+			function clearText(){
+				document.getElementById("source").value=""
+				document.getElementById("destination").value=""
+			}
+		</script>
+	<script type="text/javascript">
+		function Copy(){
+			var copyText=document.getElementById("destination");
+			copyText.select();
+			document.execCommand("copy");
+			//alert("Copied the text:" + copyText.value);
+		}
+	</script>
+
+		<style>
+			@font-face { 
+				font-family: 'win_innwaregular';
+				src: url("{{url_for('static', filename='wininnwa-webfont.woff2')}}") format('woff2'),
+					url("{{url_for('static', filename='wininnwa-webfont.woff')}}") format('woff');
+					font-weight: normal;
+					font-style: normal;
+			}
+			.textareasize{width: 100%; height: 300px; }
 			.btn {
    				 border: none; /* Remove borders */
    				 color: white; /* Add a text color */
@@ -30,69 +54,72 @@
 			.success:hover {background-color: #46a049;}
 			
 			.nav-wrapper {
-  			 		 background-color: #4CAF50 !important;
-   					 font-size: 14px;
-   					 font-weight: bold;
- 				 }
+    background-color: #4CAF50 !important;
+    font-size: 14px;
+    font-weight: bold;
+  }
 			
-	</style>
+		</style>
+
+	</head>
+
 	<body>
-		<nav>
-   		 <div class="nav-wrapper">
-     		 <a href="#" class="brand-logo">Universal Font Converter</a>
-      		<ul id="nav-mobile" class="right hide-on-med-and-down">
-       		 <li><a ><i class="material-icons">content_copy</i>  </a></li>
-      		 <li> <a ><i class="material-icons">content_paste</i> </a></li>
-      		  <li><a href="sass.html"><i class="material-icons">delete</i></a></li>
-     		 </ul>
-   		 </div>
- 		 </nav>
-		<br>
+	
+ <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Universal Font Converter</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a ><i class="material-icons" onclick="Copy()">content_copy</i>  </a></li>
+	<!--li><i class="material-icons">content_paste</i></li-->
+        <li><a><i class="material-icons" onclick="clearText()">delete</i></a></li>
+      </ul>
+    </div>
+  </nav>
+  <br><form>
 		<div style="width:50%;float:left;overflow:hidden"><h5>Input:</h5>
 		<p>
-   		 <label>
-     	 <input class="with-gap" name="group3" id="from_zawgyi" type="radio" value="from_zawgyi" checked />
-     	 <span>Zawgyi</span>
-   	 </label></p>
-	<p>
-   	 <label>
-     	 <input class="with-gap" name="group3" id="from_unicode" type="radio" value="from_unicode />
-     	 <span>Unicode</span>
-    	</label></p>
-		<p>
-    	<label>
-      	<input class="with-gap" name="group3" id="from_win" type="radio" value="from_win" />
-     	 <span>Wincode</span>
-  	  </label>
- 	 </p><br><textarea type="text" id="from_text" name="from_text" ></textarea></div>
- 	 <div style="width:50%;overflow:hidden"><h5>Output:</h5>
-		<p>
     <label>
-      <input class="with-gap" name="group4" id="to_zawgyi" type="radio" value="to_zawgyi" checked />
+      <input class="with-gap" name="input" type="radio" value="zawgyi" />
       <span>Zawgyi</span>
     </label></p>
 	<p>
     <label>
-      <input class="with-gap" name="group4" id="to_unicode" type="radio" value="to_unicode />
+      <input class="with-gap" name="input" type="radio" value="unicode" />
       <span>Unicode</span>
     </label></p>
 	<p>
     <label>
-      <input class="with-gap" name="group4" id="to_win" type="radio" value="to_win" />
-      <span>Wincode</span>
+      <input class="with-gap" name="input" type="radio" value="winmyanmar" />
+      <span>WinMyanmar</span>
     </label>
-  </p><br><textarea type="text" id="to_text" name="to_text" ></textarea></div>
-  <p align ="center"><button class="btn success" >Convert</button></p>
+	</p><br><textarea class="textareasize" id="source" ></textarea></div>
+	 <div style="width:50%;overflow:hidden"><h5>Output:</h5>
+		<p>
+    <label>
+      <input class="with-gap" name="output" type="radio" value="zawgyi"  />
+      <span>Zawgyi</span>
+    </label></p>
+	<p>
+    <label>
+      <input class="with-gap" name="output" type="radio" value="unicode" />
+      <span>Unicode</span>
+    </label></p>
+	<p>
+    <label>
+      <input class="with-gap" name="output" type="radio" value="winmyanmar"  />
+      <span>WinMyanmar</span>
+    </label>
+	</p><br><textarea  class="textareasize" id="destination" ></textarea></div>
+	<p align ="center"><button type='submit' class="btn success" >Convert</button></p></form>
 		<footer class="mdl-mega-footer">
   <div class="mdl-mega-footer__middle-section">
 
     <div class="mdl-mega-footer__drop-down-section">
-      <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+      <input class="mdl-mega-footer__heading-checkbox" type="checkbox" >
       <h1 class="mdl-mega-footer__heading">Features</h1>
       <ul class="mdl-mega-footer__link-list">
-        <li><a href="../static/aboutus.html">About us</a></li>
-        <li><a href="#">Terms</a></li>
-        <li><a href="#">Partners</a></li>
+        <li><a href="../static/about.html">About</a></li>
+        <li><a href="../static/partaner.html">Partners</a></li>
       </ul>
     </div>
 
@@ -100,9 +127,7 @@
       <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
       <h1 class="mdl-mega-footer__heading">Details</h1>
       <ul class="mdl-mega-footer__link-list">
-        <li><a href="#">Specs</a></li>
-        <li><a href="#">Tools</a></li>
-        <li><a href="#">Resources</a></li>
+        <li><a href="../static/resource.html">Resources</a></li>
       </ul>
     </div>
 
@@ -110,10 +135,7 @@
       <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
       <h1 class="mdl-mega-footer__heading">Technology</h1>
       <ul class="mdl-mega-footer__link-list">
-        <li><a href="#">How it works</a></li>
-        <li><a href="#">Patterns</a></li>
-        <li><a href="#">Usage</a></li>
-        <li><a href="#">Products</a></li>
+        <li><a href="../static/howitwork.html">How it works</a></li>
       </ul>
     </div>
 
@@ -128,18 +150,8 @@
 
   </div>
 
-  <div class="mdl-mega-footer__bottom-section">
-    <div class="mdl-logo">Title</div>
-    <ul class="mdl-mega-footer__link-list">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Privacy & Terms</a></li>
-    </ul>
-  </div>
-
 </footer>
 		<!--JavaScript at end of body for optimized loading-->
 		<script type="text/javascript" src="../static/js/materialize.js"></script>
-		
 	</body>
 </html>
-

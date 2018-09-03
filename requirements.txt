@@ -1,0 +1,17 @@
+certifi==2018.4.16
+chardet==3.0.4
+click==6.7
+Flask==1.0.2
+gunicorn==19.9.0
+heroku==0.1.4
+idna==2.7
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+nose==1.3.7
+python-dateutil==1.5
+requests==2.19.1
+tinypackage==1.0
+urllib3==1.23
+virtualenv==16.0.0
+Werkzeug==0.14.1
