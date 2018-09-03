@@ -25,10 +25,10 @@ def replace(input):
 	output = re.sub(u'[\u1037\u1094\u1095]', u'\u1037',output)#aut_myit
 	output = re.sub(u'\u1086', u'\u103F',output)#tagyi
 	output = re.sub(u'\u1039', u'\u103A',output)#athat
-	output = re.sub(u'\u105A', u'\u102B\u103A',output)#yay_cha_athat
-	output = re.sub(u'\u108A', u'\u103D\u103E',output)#waswe_hahtoe
-	output = re.sub(u'\u1088', u'\u103E\u102F',output)#hahtoe_1chaung
-	output = re.sub(u'\u1089', u'\u103E\u1030',output)#hahtoe_2chaung
+	output = re.sub(u'\u105A', u'\u102B\u103A', output)  # yay_cha_athat
+	output = re.sub(u'\u108A', u'\u103D\u103E', output)  # waswe_hahtoe
+	output = re.sub(u'\u1088', u'\u103E\u102F', output)  # hahtoe_1chaung
+	output = re.sub(u'\u1089', u'\u103E\u1030', output)  # hahtoe_2chaung
 	output = re.sub(u'\u104E', u'\u104E\u1004\u103A\u1038',output)#la_guang
 
 	return output
@@ -36,11 +36,23 @@ def replace(input):
 def visual2logical(input):
 	output = input
 	#place
-	output = re.sub(u'((?:\u1031)?)((?:\u103C)?)([\u1000-\u1021])((?:\u103D)?)((?:\u103B)?)((?:\u103E)?)((?:\u102C)?)', u"\\3\\2\\5\\4\\6\\1\\7",output);
+	output = re.sub(u'((?:\u1031)?)((?:\u103C)?)((?:\u1064)?)([\u1000-\u1021])((?:\u1039[\u1000-\u1021])?)((?:\u103B)?)((?:\u103D)?)((?:\u103E)?)((?:\u1037)?)((?:\u102C)?)', u"\\3\\4\\5\\2\\6\\7\\8\\1\\9\\10",output);
+	output = re.sub(u'\u1064', u'\u1004\u103A\u1039', output)  # ng-sint
+
+
 	return output
+
 
 def decompose(input):
 	output = input
+	# ngr_sint
+
+	output = re.sub(u'([\u1000-\u1021])\u1064', u'\u1064\\1', output)
+	output = re.sub(u'([\u1000-\u1021])\u108b', u'\u1064\\1\u102d', output)  # with lone_gyi_tin
+	output = re.sub(u'([\u1000-\u1021])\u108c', u'\u1064\\1\u102e', output)  # with lone_gyi_tin_san_khat
+	output = re.sub(u'([\u1000-\u1021])\u108d', u'\u1064\\1\u1036', output)  # with ta_ta_tin
+	output = re.sub(u'\u108e', u'\u102d\u1036', output)  # lone_gyi_tin_ta_ta_tin
+
 	#pa_sint
 	output = re.sub(u'\u1060', u'\u1039\u1000',output)#kagyi
 	output = re.sub(u'\u1061', u'\u1039\u1001',output)#ka_kway
@@ -66,13 +78,7 @@ def decompose(input):
 	output = re.sub(u'[\u107B\u1093]', u'\u1039\u1018',output)#ba_gone
 	output = re.sub(u'\u107C', u'\u1039\u1019',output)#ma
 	output = re.sub(u'\u1085', u'\u1039\u101C',output)#la
-	#ngr_sint
-	output = re.sub(u'([\u1000-\u1021])\u1064', u'\u1064\\1',output)
-	output = re.sub(u'\u1064', u'\u1004\u103A\u1039',output)
-	output = re.sub(u'([\u1000-\u1021])\u108b', u'\u1064\\1\u102d', output)#with lone_gyi_tin
-	output = re.sub(u'([\u1000-\u1021])\u108c', u'\u1064\\1\u102e', output)#with lone_gyi_tin_san_khat
-	output = re.sub(u'([\u1000-\u1021])\u108d', u'\u1064\\1\u1036', output)#with ta_ta_tin
-	output = re.sub(u'\u108e', u'\u102d\u1036', output)#lone_gyi_tin_ta_ta_tin
+
 	return output
 
 def convert(input):
