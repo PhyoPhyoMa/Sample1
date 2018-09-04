@@ -19,7 +19,7 @@ def convert():
     if myinput == "zawgyi" and myoutput == "unicode":
         output = zg2uni.convert(source)
     if myinput == "zawgyi" and myoutput == "winmyanmar":
-        output = zg2uni.convert(uni2win.convert(source))
+        output = uni2win.convert(zg2uni.convert(source))
     if myinput == "unicode" and myoutput == "zawgyi":
         output = uni2zg.convert(source)
     if myinput == "unicode" and myoutput == "winmyanmar":
